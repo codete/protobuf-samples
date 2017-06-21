@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+message Transaction {
+    uint64 id = 1;
+    enum TransactionType {
+        Credit = 0;
+        Debit = 1;
+    }
+    TransactionType transactionType = 2;
+    string transactionDate = 3;
+    string bookingDate = 4;
+    string principalDisposal = 5;
+    string orderingCustomer = 6;
+    string beneficiary = 7;
+    string beneficiaryAccount = 8;
+    string details = 9;
+    double amount = 10;
+}
+
+message Account {
+    uint64 id = 1;
+    string name = 2;
+    double balance = 3;
+    double availableFunds = 4;
+    string iban = 5;
+    string currency = 6;
+    string owner = 7;
+    string ownerAddress = 8;
+    repeated Transaction transactions = 9;
+}
+
+message AccountList {
+    repeated Account accounts = 1;
+}
